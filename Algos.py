@@ -14,7 +14,6 @@ def anagram(string):
 	for i in range(0,26):
 		if(record[i]!=0):
 			indices.add(i)
-	print(indices)
 	for i in range(0,len(data)) :
 		f=0
 		word=data[i]
@@ -37,7 +36,6 @@ def build(string):
 	for i in range(0, 26):
 		if (record[i] != 0):
 			indices.add(i)
-	print(indices)
 	for i in range(0, len(data)):
 		f = 0
 		word = data[i]
@@ -59,5 +57,24 @@ def build(string):
 	for i in builds:
 		print(words[i])
 
+def clean_up(string):
+	buff=""
+	for char in string:
+		if char == '*' or char == '?':
+			buff = buff + '.'
+		buff = buff+char
+	return buff
 
+def pattern(string):
+	import re
+	matches=[]
+	match=re.compile(clean_up(string))
+	for word in words:
+		if(re.fullmatch(match,word)):
+			matches.append(word)
+	print(str(len(matches)) + " Words found ")
+	for word in matches:
+		print(word)
+
+	
 
